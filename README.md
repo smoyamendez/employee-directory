@@ -31,9 +31,7 @@ As a user, I want to be able to view my entire employee directdory at once so th
 
 ## Contributing
 ---
-Author: Sommer Moya-Mendez [(smoyamendez)](https://github.com/smoyamendez)
-
-Starter code provided by Trilogy Education.
+Sole Author: Sommer Moya-Mendez [(smoyamendez)](https://github.com/smoyamendez)
 
 ## Questions
 ---
