@@ -22,7 +22,7 @@ function makeTable(props) {
                 <tr  key={result.id.value} >
                 <th scope="row"><img src={result.picture.thumbnail} alt="employee-img"></img></th>
                 <td>{result.name.first} {result.name.last}</td>
-                <td>{result.phone}</td>
+                <td><a href={`tel:${result.phone}`}>{result.phone}</a></td>
                 <td><a href={`mailto:${result.email}`}>{result.email}</a></td>
                 <td>{new Date(result.dob.date).getMonth() + 1}/{new Date(result.dob.date).getDate()}/{new Date(result.dob.date).getFullYear()}</td>
                 </tr>

@@ -68,6 +68,7 @@ class App extends Component {
       <>
         <div className="container-fluid">
           <h1>Employee Directory</h1>
+          <p>Click on 'Name' to sort from A to Z</p>
         </div>
         <SearchInput
           handleInputChange={this.handleInputChange}
