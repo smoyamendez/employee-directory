@@ -1,9 +1,8 @@
 import React from 'react';
 
 function makeTable(props) {
-
     return (
-        <table class="table">
+        <table className="table">
             <thead>
                 <tr>
                     <th scope="col">PHOTO</th>
@@ -13,14 +12,17 @@ function makeTable(props) {
                     <th scope="col">DOB</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-            </tbody>
+            {props.results.map(result => (
+                <tbody key={result.id.value}>
+
+                    <th scope="row"><img src={result.picture.thumbnail} alt="employee-img"></img></th>
+                    <td>{result.name.first} {result.name.last}</td>
+                    <td>{result.phone}</td>
+                    <td>{result.email}</td>
+                    <td>{result.dob.date}</td>
+
+                </tbody>
+            ))}
         </table>
     )
 };
