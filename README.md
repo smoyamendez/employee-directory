@@ -2,7 +2,7 @@
 
 REPO: https://github.com/smoyamendez/employee-directory
 
-HEROKU: https://smoyamendez.github.io/employee-directory/
+DEPLOYED: https://smoyamendez.github.io/employee-directory/
 
 ## Table of Contents
 
