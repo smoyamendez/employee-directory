@@ -16,10 +16,10 @@ class App extends Component {
 
   searchEmployees = () => {
     axios.get("https://randomuser.me/api/?results=15&inc=name,email,dob,phone,id,picture,nat&nat=us")
-    .then(res => this.setState({ results: res.data.results }))
-    .catch(err => console.log(err));
+      .then(res => this.setState({ results: res.data.results }))
+      .catch(err => console.log(err));
   };
-  
+
   handleInputChange = event => {
     const value = event.target.value;
     this.setState({
@@ -27,7 +27,7 @@ class App extends Component {
     });
     this.handleSearch(value);
   };
-  
+
   handleSearch = value => {
     console.log(value)
     const stateArray = this.state.results;
@@ -35,13 +35,32 @@ class App extends Component {
     if (value.length >= 0) {
       const searchFilter = stateArray.filter(result => {
         const employeeName = [result.name.first];
-        return employeeName.some(i => i.toLowerCase().includes(value.toLowerCase()))});
-        this.setState({
-          searchResults: searchFilter
-        });
+        return employeeName.some(i => i.toLowerCase().includes(value.toLowerCase()))
+      });
+      this.setState({
+        searchResults: searchFilter
+      });
     }
   };
-  
+
+  filterByProp = () => {
+    const filterProp = this.state.results;
+    const filter = filterProp.sort((a, b) => {
+      let nameA = a.name.first.toLowerCase();
+      let nameB = b.name.first.toLowerCase();
+      if (nameA < nameB) {
+        return -1;
+      } else {
+        return 1;
+      };
+    })
+
+    this.setState({
+      results: filter
+    })
+
+  }
+
   render() {
     console.log(this.state.results);
     const searchResultLength = this.state.searchResults;
@@ -50,11 +69,11 @@ class App extends Component {
         <div className="container-fluid">
           <h1>Employee Directory</h1>
         </div>
-        <SearchInput 
+        <SearchInput
           handleInputChange={this.handleInputChange}
           handleSearch={this.handleSearch}
         />
-        <Table results={searchResultLength.length ? this.state.searchResults : this.state.results} />
+        <Table filterByProp={this.filterByProp} results={searchResultLength.length ? this.state.searchResults : this.state.results} />
       </>
     );
   }
